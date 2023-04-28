@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <title>Ludiflex | Login</title>
+</head>
+<body>
+    <div class="box">
+        <div class="container">
+            <div class="top">
+                <span>Have an account?</span>
+                <header>Login</header>
+            </div>
+            <form id="my-form" onsubmit="onSubmit()">
+                <div class="input-field">
+                    <input type="text" class="input" placeholder="Username" id="">
+                    <i class='bx bx-user' ></i>
+                </div>
+                <div class="input-field">
+                    <input type="Password" class="input" placeholder="Password" id="">
+                    <i class='bx bx-lock-alt'></i>
+                </div>
+                <div class="two-col">
+                    <div class="one">
+                        <input type="checkbox" name="" id="check">
+                        <label for="check"> Remember Me</label>
+                    </div>
+                    <div class="two">
+                        <label><a href="#">Forgot password?</a></label>
+                    </div>
+                </div>
+                <div class="g-recaptcha" data-sitekey="6LcL5MgkAAAAAK9YOPb9j437SEE1BcJEENmct_81"></div>
+                <div class="input-field">
+                    <input type="submit" class="submit" value="Login" id="submit-button">
+                </div>
+            </form>
+            <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+        </div>
+    </div>  
+
+    <script src="https://cdn.privacy-pass.org/lib/privacypass-challenge.min.js"></script>
+    <script>
+        var onloadCallback = function() {
+          PrivacyPassChallenge.init(
+            document.getElementById('submit-button'), // Le bouton qui déclenche la soumission du formulaire
+            '6LcL5MgkAAAAAK9YOPb9j437SEE1BcJEENmct_81', // Votre clé de site reCAPTCHA
+            'example.com', // Le domaine de votre site
+            function(resp) {
+              if (resp) {
+                document.getElementById('my-form').submit(); // Soumission du formulaire si la réponse est valide
+              }
+            }
+          );
+        };
+      
+        // Fonction qui sera appelée lors de la soumission du formulaire
+        function onSubmit() {
+          // Vérifier que le captcha a été validé
+          if (PrivacyPassChallenge.isReady()) {
+            // Rediriger l'utilisateur vers la page de confirmation
+            window.location.href = "confirmation.html";}}
+         
+</script>
+</body>
+</html>
